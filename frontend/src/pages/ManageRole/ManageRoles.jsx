@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Table, Select, message } from "antd";
+import { Table, Select, message, Button } from "antd";
 import axios from "axios";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const ManageRoles = () => {
     const [users, setUsers] = useState([]);
-  
+    const navigate = useNavigate();
+
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -38,7 +41,15 @@ const ManageRoles = () => {
   
     return (
       <div style={{ padding: "20px" }}>
-        <h1 style={{ marginBottom: "20px" }}>Gestionar Roles</h1>
+        <h1 style={{ marginBottom: "20px", textAlign: 'center'}}>Gestionar Roles</h1>
+        <Button 
+          type="text" 
+          icon={<ArrowLeftOutlined />} 
+          onClick={() => navigate(-1)}
+          style={{ marginBottom: 16 }}
+        >
+          Volver
+        </Button>
         <Table 
           dataSource={users} 
           rowKey="id" 

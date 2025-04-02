@@ -71,7 +71,7 @@ const KanbanBoard = ({ tasks, onEdit, onDelete, userRole, userId, users }) => {
                     </p>
                     <p>Fecha de finalización: {task.timeUntilFinish}</p>
                     <p>Descripcion: {task.description}</p>
-                    <p>Tipo de tarea: {task.taskType}</p>
+                    <p>Tipo de tarea: {task.taskType.toUpperCase()}</p>
                     {task.taskType === 'grupal' && (
   <Collapse>
     <Panel header="Subtareas" key="1">

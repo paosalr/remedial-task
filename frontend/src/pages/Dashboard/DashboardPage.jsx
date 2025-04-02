@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import KanbanBoard from '../../components/KanbanBoard';
 import { useNavigate } from "react-router-dom";
 import GroupForm from '../../components/GroupForm';
+import { ArrowLeftOutlined, LogoutOutlined } from "@ant-design/icons"; 
 
 const DashboardPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -278,7 +279,15 @@ const DashboardPage = () => {
       onClick={({ key }) => {
         if (key === "manage-roles") navigate("/manage-roles");
       }}
-    >
+    > 
+        <Menu.Item key="logout" onClick={() => {
+          localStorage.removeItem("token");
+          navigate("/login");
+      }}
+    style={{ marginRight: 'auto', padding: '0 10px' }}  // marginRight: 'auto' lo empuja todo a la derecha
+  >
+    <LogoutOutlined /> Cerrar sesión
+  </Menu.Item>
         <Menu.Item key="dashboard">Dashboard</Menu.Item>
         {(userRole === "master") && (
           <Menu.Item key="manage-roles">Manage Roles</Menu.Item>
