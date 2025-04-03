@@ -40,7 +40,7 @@ const DashboardPage = () => {
   // Función para cargar tareas del usuario actual
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks", {
+      const response = await axios.get("https://remedial-task.onrender.com/api/tasks", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       if (userRole === "employee") {
@@ -72,7 +72,7 @@ const DashboardPage = () => {
   // Función para cargar grupos
   const fetchGroups = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/groups", {
+      const response = await axios.get("https://remedial-task.onrender.com/api/groups", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setGroups(response.data);
@@ -85,7 +85,7 @@ const DashboardPage = () => {
   // Función para cargar usuarios
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/users", {
+      const response = await axios.get("https://remedial-task.onrender.com/api/users", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setUsers(response.data);
@@ -115,7 +115,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/tasks", {
+        const response = await axios.get("https://remedial-task.onrender.com/api/tasks", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         if (!Array.isArray(response.data)) {
@@ -173,7 +173,7 @@ const DashboardPage = () => {
         groupId: values.groupId, // Incluir el ID del grupo seleccionado
       };
 
-      await axios.post("http://localhost:5000/api/tasks", taskData, {
+      await axios.post("https://remedial-task.onrender.com/api/tasks", taskData, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       message.success("Tarea agregada exitosamente");
@@ -210,7 +210,7 @@ const DashboardPage = () => {
         );
         
         await axios.put(
-          `http://localhost:5000/api/tasks/${currentTask.id}/update-subtask`,
+          `https://remedial-task.onrender.com/api/tasks/${currentTask.id}/update-subtask`,
           {
             subtaskId: currentTask.subtasks.find(st => st.assignedTo === userId)?.id,
             
@@ -225,7 +225,7 @@ const DashboardPage = () => {
       } else {
         // Para admin/master o tareas individuales de empleado
         await axios.put(
-          `http://localhost:5000/api/tasks/${currentTask.id}`,
+          `https://remedial-task.onrender.com/api/tasks/${currentTask.id}`,
           values,
           { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
         );
@@ -243,7 +243,7 @@ const DashboardPage = () => {
   // Función para eliminar una tarea
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+      await axios.delete(`https://remedial-task.onrender.com/api/tasks/${taskId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       message.success("Tarea eliminada exitosamente");
@@ -257,7 +257,7 @@ const DashboardPage = () => {
   // Función para crear un nuevo grupo
   const handleCreateGroup = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/groups', values, {
+      const response = await axios.post('https://remedial-task.onrender.com/api/groups', values, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       message.success('Grupo creado exitosamente');

@@ -11,7 +11,7 @@ const ManageRoles = () => {
     useEffect(() => {
       const fetchUsers = async () => {
         try {
-          const response = await axios.get("http://localhost:5000/api/users", {
+          const response = await axios.get("https://remedial-task.onrender.com/api/users", {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}`
         },
           });
@@ -27,7 +27,7 @@ const ManageRoles = () => {
   
     const handleRoleChange = async (userId, newRole) => {
       try {
-        await axios.post("http://localhost:5000/api/auth/change-role", { userId, newRole }, {
+        await axios.post("https://remedial-task.onrender.com/api/auth/change-role", { userId, newRole }, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         });
