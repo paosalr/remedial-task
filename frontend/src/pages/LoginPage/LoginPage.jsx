@@ -37,8 +37,18 @@ const LoginPage = () => {
           </Button>
         </Form.Item>
       </Form>
-    </div>
-  );
+      <div style={{ textAlign: 'center', marginTop: '16px' }}>
+        <Text>¿No tienes cuenta? </Text>
+        <Button 
+          type="link" 
+          style={{ padding: '0', color: '#4F2A42', fontWeight: 'bold' }} 
+          onClick={() => navigate('/register')}
+        >
+          Regístrate
+        </Button>
+      </div>  
+      </div>
+    );
 };
 
 export default LoginPage;
