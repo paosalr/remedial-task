@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { register } from '../../api/Auth';
-import { Input, Button, Form, notification } from 'antd';
+import { Input, Button, Form, notification, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     try {
@@ -34,6 +36,16 @@ const RegisterPage = () => {
           </Button>
         </Form.Item>
       </Form>
+      <div style={{ textAlign: 'center', marginTop: '16px' }}>
+        <Typography.Text>¿Ya tienes cuenta? </Typography.Text>
+        <Button 
+          type="link" 
+          style={{ padding: '0', color: '#4F2A42', fontWeight: 'bold' }} 
+          onClick={() => navigate('/login')}
+        >
+          Inicia sesión
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Typography } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
+const { Text } = Typography;
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -43,10 +45,10 @@ const LoginPage = () => {
           type="link" 
           style={{ padding: '0', color: '#4F2A42', fontWeight: 'bold' }} 
           onClick={() => navigate('/register')}
-        >
-          Regístrate
+          >
+          Regístrate aquí
         </Button>
-      </div>  
+      </div>
       </div>
     );
 };
