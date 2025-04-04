@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://remedial-task.onrender.com/api/auth',
+  baseURL: 'https://remedial-task.onrender.com/api',
 });
 
 export const register = (data) => API.post('/auth/register', data);

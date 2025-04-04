@@ -9,18 +9,30 @@ const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
-app.use(cors({origin: [
-    'https://remedial-task.vercel.app',
-    'https://remedial-task-git-main-paosalrs-projects.vercel.app',
-    'https://remedial-task-qub9najok-paosalrs-projects.vercel.app'
-  ],
+const allowedOrigins = [
+  'https://remedial-task.vercel.app',
+  'https://remedial-task-git-main-paosalrs-projects.vercel.app',
+  'https://remedial-task-qub9najok-paosalrs-projects.vercel.app',
+  'http://localhost:3000' 
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
 app.use(express.json());
 
 app.use('/api/tasks', taskRoutes);
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes); 
 app.use('/api/groups', groupRoutes);
 app.use('/api/users', userRoutes);
 
