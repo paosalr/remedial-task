@@ -13,7 +13,7 @@ admin.initializeApp({
   databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`
 });
 
-console.log(`🔥 Firebase conectado a proyecto: ${serviceAccount.project_id}`);
+console.log(`Firebase conectado a proyecto: ${serviceAccount.project_id}`);
 const db = admin.firestore();
 
 db.listCollections()
